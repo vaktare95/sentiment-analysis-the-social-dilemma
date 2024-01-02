@@ -101,4 +101,4 @@ def show_models_metrics(
     plt.ylabel(metric_type)
     title = f"{transformer_type} transformer - models {metric_type}"
     plt.title(title)
-    plt.savefig(f"./{title}.png")
+    plt.savefig(f"./boxplots/{title}.png")

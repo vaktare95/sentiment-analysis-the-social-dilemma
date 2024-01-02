@@ -25,7 +25,7 @@ CUSTOM_STOPWORDS = {
 
 def get_stopwords() -> Set[str]:
     # from http://www.lextek.com/manuals/onix/stopwords1.html
-    stopwords = set(w.strip() for w in open("./stopwords.txt"))
+    stopwords = set(w.strip() for w in open("./data/stopwords.txt"))
     return stopwords.union(CUSTOM_STOPWORDS)
 
 

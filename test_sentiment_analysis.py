@@ -56,7 +56,7 @@ def sentiment_analysis_test(
     
     
 if __name__ == "__main__":
-    csv_file_path = Path("./TheSocialDilemma.csv")
+    csv_file_path = Path("./data/TheSocialDilemma.csv")
     examples_number_for_validation = 5_000
     n_repeats = 2
     K = 5
