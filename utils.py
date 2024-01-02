@@ -99,5 +99,6 @@ def show_models_metrics(
     ax.boxplot(models_metrics[metric_type].T)
     plt.xticks(np.arange(len(models_names)) + 1, models_names)
     plt.ylabel(metric_type)
-    plt.title(f"{transformer_type} transformer - models {metric_type}")
-    plt.show()
+    title = f"{transformer_type} transformer - models {metric_type}"
+    plt.title(title)
+    plt.savefig(f"./{title}.png")

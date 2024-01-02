@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Literal
+
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 
@@ -65,4 +66,5 @@ if __name__ == "__main__":
     sentiment_analysis_validaton(
         csv_file_path, examples_number_for_validation, n_repeats, K, "st"
     )
+    # Random Forest algorithm with Bag Of Words transformer had the best results 
     sentiment_analysis_test(csv_file_path, "RF", "bow")

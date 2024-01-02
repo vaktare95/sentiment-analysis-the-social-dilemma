@@ -16,7 +16,7 @@ def get_tokenized_tweets(tweets: List[str]) -> List[str]:
     return tokenized_tweets
 
 
-def create_data_matrix_from_tweets_st(
+def create_data_matrix_from_tweets(
     positives_tokenized, neutrals_tokenized, negatives_tokenized
 ):
     st_model = SentenceTransformer("all-mpnet-base-v2")
@@ -45,7 +45,7 @@ def create_data_matrix_from_tweets_st(
     )
 
 
-def get_data_matrix_st(
+def get_data_matrix(
     csv_file_path: Path, examples_number_for_validation: Optional[int] = None
 ) -> np.ndarray:
     if examples_number_for_validation:
@@ -63,6 +63,6 @@ def get_data_matrix_st(
     neutrals_tokenized = get_tokenized_tweets(neutral_tweets)
     negatives_tokenized = get_tokenized_tweets(negative_tweets)
 
-    return create_data_matrix_from_tweets_st(
+    return create_data_matrix_from_tweets(
         positives_tokenized, neutrals_tokenized, negatives_tokenized
     )

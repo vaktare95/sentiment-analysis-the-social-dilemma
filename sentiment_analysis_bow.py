@@ -1,8 +1,8 @@
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
-import numpy as np
 import nltk
+import numpy as np
 
 import utils
 
