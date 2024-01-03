@@ -1,4 +1,4 @@
-This code is similar to my Kaggle notebook: https://www.kaggle.com/code/vaktare95/accuracy-90-1-f1-score-88-2
+This code is similar to my Kaggle notebook: https://www.kaggle.com/code/vaktare95/accuracy-90-f1-score-88
 
 This is my implementation of sentiment analysis based on tweets considering _The Social Dilemma_ movie. The dataset can be downloaded from: https://www.kaggle.com/datasets/kaushiksuresh147/the-social-dilemma-tweets
 
