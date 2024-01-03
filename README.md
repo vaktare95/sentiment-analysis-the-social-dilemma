@@ -6,6 +6,8 @@ I've tested 2 approaches of NLP transformation. The first one is the concept of 
 
 Random Forest Classifier with data transformed by BOW transformer turned out to have the best performance in 5-fold cross validation based on ~5k examples, as it can be seen in the `boxplots` folder. Finally, using all the examples from the dataset (~20k) with BOW transformation, I've tested Random Forest Classifier with train/test ratio equal to 80%/20%. **The accuracy of the model was ~90.0% and the F1-score was ~88.1%.**
 
+The code is adjusted for python3.10.
+
 To run validations and test on your own, just run:
 ```
 python3 -m pip install -r requirements.txt
