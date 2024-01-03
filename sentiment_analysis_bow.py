@@ -8,26 +8,6 @@ import utils
 
 WORDNET_LEMMATIZER = nltk.stem.WordNetLemmatizer()
 
-CUSTOM_STOPWORDS = {
-    "thesocialdilemma",
-    "movie",
-    "movies",
-    "film",
-    "films",
-    "netflix",
-    "twitter",
-    "tweet",
-    "tweets",
-    "retweet",
-    "retweets",
-}
-
-
-def get_stopwords() -> Set[str]:
-    # from http://www.lextek.com/manuals/onix/stopwords1.html
-    stopwords = set(w.strip() for w in open("./data/stopwords.txt"))
-    return stopwords.union(CUSTOM_STOPWORDS)
-
 
 # custom tokenizer instead of nltk.tokenize.word_tokenize()
 def tweet_text_tokenize(tweet_text: str) -> List[str]:
@@ -37,7 +17,7 @@ def tweet_text_tokenize(tweet_text: str) -> List[str]:
     ]
 
 
-def tokenize_tweet(tweet_text: str, stopwords: Set[str]):
+def tokenize_tweet(tweet_text: str) -> List[str]:
     tweet_text = tweet_text.lower()
     tokens = tweet_text_tokenize(tweet_text)
     tokens = [
@@ -46,7 +26,6 @@ def tokenize_tweet(tweet_text: str, stopwords: Set[str]):
         if len(t) > 2 and not any([c in t for c in ["@", "…", "https"]])
     ]
     tokens = [WORDNET_LEMMATIZER.lemmatize(t) for t in tokens]
-    tokens = [t for t in tokens if t not in stopwords]
     return tokens
 
 
@@ -54,11 +33,10 @@ def update_word_index_map_with_tokenized_tweets(
     word_index_map: Dict[str, int],
     tweets: List[str],
     current_index: int,
-    stopwords: Set[str],
 ) -> Tuple[Dict[str, int], List[List[str]], int]:
     tokenized_tweets = []
     for tweet in tweets:
-        tokens = tokenize_tweet(tweet, stopwords)
+        tokens = tokenize_tweet(tweet)
         tokenized_tweets.append(tokens)
         for token in tokens:
             if token not in word_index_map:
@@ -97,8 +75,6 @@ def create_data_matrix_from_tweets(
 def get_data_matrix(
     csv_file_path: Path, examples_number_for_validation: Optional[int] = None
 ) -> np.ndarray:
-    stopwords = get_stopwords()
-
     if examples_number_for_validation:
         positive_data, neutral_data, negative_data = utils.get_csv_data(
             csv_file_path, examples_number_for_validation
@@ -120,7 +96,6 @@ def get_data_matrix(
         word_index_map,
         positive_tweets,
         current_index,
-        stopwords,
     )
     (
         word_index_map,
@@ -130,7 +105,6 @@ def get_data_matrix(
         word_index_map,
         neutral_tweets,
         current_index,
-        stopwords,
     )
     (
         word_index_map,
@@ -140,7 +114,6 @@ def get_data_matrix(
         word_index_map,
         negative_tweets,
         current_index,
-        stopwords,
     )
 
     data_matrix_positives = create_data_matrix_from_tweets(

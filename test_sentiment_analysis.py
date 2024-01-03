@@ -41,7 +41,7 @@ def sentiment_analysis_test(
         X, Y, test_size=0.2, random_state=42
     )
 
-    print(f"Test of model: {model_name}")
+    print(f"Test of model: {model_name} with {transformer_type} transformer")
     model = utils.MODELS[model_name]
     model.fit(Xtrain, Ytrain)
     Ypred = model.predict(Xtest)
@@ -66,5 +66,5 @@ if __name__ == "__main__":
     sentiment_analysis_validaton(
         csv_file_path, examples_number_for_validation, n_repeats, K, "st"
     )
-    # Random Forest algorithm with Bag Of Words transformer had the best results 
-    sentiment_analysis_test(csv_file_path, "RF", "bow")
+    # Multi Layer Perceptron algorithm with Bag Of Words transformer had the best results in validation 
+    sentiment_analysis_test(csv_file_path, "MLP", "bow")

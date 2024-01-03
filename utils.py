@@ -17,7 +17,7 @@ MODELS = {
     "ADA": AdaBoostClassifier(),
     "LR": LogisticRegression(),
     "KN": KNeighborsClassifier(),
-    "MLP": MLPClassifier(),
+    "MLP": MLPClassifier(max_iter=500),
     "RF": RandomForestClassifier(),
     "SVM": SVC(decision_function_shape="ovo"),
 }
