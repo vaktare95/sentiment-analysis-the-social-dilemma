@@ -4,7 +4,7 @@ There are 3 classes of tweets: positive, neutral and negative opinions about the
 
 I've tested 2 approaches of NLP transformation. The first one is the concept of _Bag Of Words_ (BOW), where the order of the words in the sentence doesn't matter. In this approach I've created my own vocabulary based on the words in tweets in the dataset. The number of dimensions is the size of vocabulary and for every example (tweet) the more a particular word occurs, the bigger relative value there is in the corresponding dimension. The second approach is based on transforming whole tweets with sentence transformer (ST) from BERT all-mpnet-base-v2 to vectors with 768 dimensions: https://www.sbert.net/docs/pretrained_models.html#sentence-embedding-models/
 
-Multi Layer Perceptron with data transformed by BOW transformer turned out to have the best performance in 5-fold cross validation based on ~5k examples, as it can be seen in the `boxplots` folder. Finally, using all the examples from the dataset (~20k) with BOW transformation, I've tested Random Forest Classifier with train/test ratio equal to 80%/20%. **The accuracy of the model was ~90.0% and the F1-score was ~88.1%.**
+Multi Layer Perceptron with data transformed by BOW transformer turned out to have the best performance in 5-fold cross validation based on ~5k examples, as it can be seen in the `boxplots` folder. Finally, using all the examples from the dataset (~20k) with BOW transformation, I've tested Multi Layer Perceptron with train/test ratio equal to 80%/20%. **The accuracy of the model was ~90.0% and the F1-score was ~88.1%.**
 
 The code is adjusted for python3.10.
 
